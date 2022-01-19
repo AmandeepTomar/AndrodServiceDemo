@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AndrodServiceDemo</string>
+    <string name="start_service">Start Service</string>
+    <string name="stop_service">Stop Service</string>
+    <string name="get_random_number">Get Random Number</string>
+    <string name="bind_service_with_in_two_apps">Bind service with in two apps</string>
+    <string name="bind_service_with_in_aap">Bind service with in aap</string>
+    <string name="bind_service">Bind Service</string>
+    <string name="un_bind_service">Un Bind service</string>
+</resources>

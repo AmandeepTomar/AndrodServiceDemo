@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/_10dp"
+    tools:context=".bindservice.BindServiceActivity">
+
+    <TextView
+        android:id="@+id/tvNumberBind"
+        android:padding="@dimen/_10dp"
+        android:layout_marginTop="@dimen/_20dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvNumberBind"
+        android:text="@string/start_service"
+        android:id="@+id/btnStartService"/>
+    <com.google.android.material.button.MaterialButton
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnStartService"
+        android:text="@string/stop_service"
+        android:id="@+id/btnStopService"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnStopService"
+        android:text="@string/bind_service"
+        android:id="@+id/btnBindService"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnBindService"
+        android:text="@string/un_bind_service"
+        android:id="@+id/btnUnBindService"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnUnBindService"
+        android:text="@string/get_random_number"
+        android:id="@+id/btnGetNo"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
