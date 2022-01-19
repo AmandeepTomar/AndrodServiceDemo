@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.amandeep.androdservicedemo.bindingbetweentwoaaps.BindingTwoAppsActivity
 import com.amandeep.androdservicedemo.bindservice.BindServiceActivity
 import com.amandeep.androdservicedemo.databinding.ActivityMainBinding
 import com.amandeep.androdservicedemo.startedService.StartedService
@@ -29,6 +30,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnBindServiceLocal.setOnClickListener {
             Intent(this,BindServiceActivity::class.java).apply {
+                startActivity(this)
+            }
+        }
+
+        binding.btnBindServiceRemote.setOnClickListener {
+            Intent(this,BindingTwoAppsActivity::class.java).apply {
                 startActivity(this)
             }
         }

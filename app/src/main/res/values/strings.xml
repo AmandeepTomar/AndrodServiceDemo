@@ -7,4 +7,5 @@
     <string name="bind_service_with_in_aap">Bind service with in aap</string>
     <string name="bind_service">Bind Service</string>
     <string name="un_bind_service">Un Bind service</string>
+    <string name="txt_service_not_started">Service is not Started</string>
 </resources>

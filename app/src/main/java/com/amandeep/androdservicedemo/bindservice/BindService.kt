@@ -12,7 +12,7 @@ import kotlin.random.Random
 class BindService : Service() {
 
     private var isRandomNoGenerated=false;
-    private var min=Int.MIN_VALUE
+    private var min=0
     private var max=100
     private var randomNo=0
 
@@ -25,6 +25,7 @@ private val iBinder=MyServiceBinder()
     }
 
     override fun onBind(p0: Intent?): IBinder? {
+        Log.i(TAG, "onBind: ")
         return iBinder
     }
 
@@ -66,7 +67,7 @@ private val iBinder=MyServiceBinder()
             try {
             Thread.sleep(1000)
                 if (isRandomNoGenerated) {
-                    randomNo = Random.nextInt(max) * min
+                    randomNo = Random.nextInt(max) + min
                     Log.e(TAG, "generateRandomNumber: $randomNo")
                 }
             }catch (ex:Exception){
@@ -77,6 +78,11 @@ private val iBinder=MyServiceBinder()
 
     private fun randomNoGeneratorStop(){
         isRandomNoGenerated=false
+    }
+
+
+    public fun getRandomNumber(): Int {
+        return randomNo
     }
 
 

@@ -13,7 +13,7 @@ import com.amandeep.androdservicedemo.databinding.ActivityStartedServiceBinding
 class StartedServiceActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStartedServiceBinding
     private var isButtonClicked=false
-    private var randomNumber:Int=0
+    private var isServiceStop=true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityStartedServiceBinding.inflate(layoutInflater)
@@ -44,6 +44,7 @@ class StartedServiceActivity : AppCompatActivity() {
         binding.btnStartService.setOnClickListener {
             Log.e(TAG, "handleClick: MainActivity ${Thread.currentThread().id}")
             startService(startedService)
+            isServiceStop=false
 
         }
 
@@ -53,6 +54,9 @@ class StartedServiceActivity : AppCompatActivity() {
 
         binding.btnGetNo.setOnClickListener {
             isButtonClicked=true
+            if (isServiceStop){
+                binding.tvNumber.text=getString(R.string.txt_service_not_started)
+            }
 
         }
     }
