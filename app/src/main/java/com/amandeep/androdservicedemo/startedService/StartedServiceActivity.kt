@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Observer
 import com.amandeep.androdservicedemo.R
+import com.amandeep.androdservicedemo.STARTED_SERVICE_CODE
 import com.amandeep.androdservicedemo.STARTED_SERVICE_DATA
 import com.amandeep.androdservicedemo.TAG
 import com.amandeep.androdservicedemo.databinding.ActivityStartedServiceBinding
@@ -59,5 +60,11 @@ class StartedServiceActivity : AppCompatActivity() {
             }
 
         }
+    }
+
+    override fun onBackPressed() {
+        val intent=Intent()
+        setResult(STARTED_SERVICE_CODE,intent)
+        super.onBackPressed()
     }
 }

@@ -2,16 +2,16 @@ package com.amandeep.androdservicedemo.bindingbetweentwoaaps
 
 import android.app.Service
 import android.content.Intent
-import android.os.Handler
-import android.os.IBinder
+import android.os.*
 import android.util.Log
 import com.amandeep.androdservicedemo.TAG
 import java.lang.Exception
 import kotlin.random.Random
 
-class BindingTwoAppsService : Service() {
+class ServerSideService : Service() {
     private var isRandomNoGenerator=false
     private var randomNumber=0
+    private val GET_COUNT=0
 
     override fun onCreate() {
         Log.i(TAG, "onCreate: ")
@@ -19,11 +19,14 @@ class BindingTwoAppsService : Service() {
     }
 
     override fun onBind(p0: Intent?): IBinder? {
-        return null
+        return randomMessenger.binder
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         isRandomNoGenerator=true
+        Thread(Runnable {
+            startGeneratingRandomNumber()
+        }).start()
 
         return START_STICKY
     }
@@ -52,6 +55,7 @@ class BindingTwoAppsService : Service() {
     private fun startGeneratingRandomNumber(){
         while (isRandomNoGenerator){
             try{
+                Thread.sleep(1000)
                 if (isRandomNoGenerator){
                     randomNumber= Random.nextInt(100)+0
                     Log.e(TAG, "RandomNumber: $randomNumber")
@@ -71,7 +75,22 @@ class BindingTwoAppsService : Service() {
     }
 
 
-    private class RandomNumberRequestHandler : Handler(){
+    private val randomMessenger = Messenger(RandomNumberRequestHandler())
 
+    inner class RandomNumberRequestHandler : Handler(){
+        override fun handleMessage(msg: Message) {
+            when(msg.what){
+                GET_COUNT->{
+                    val messageGetRandomNumber=Message.obtain(null,GET_COUNT)
+                    messageGetRandomNumber.arg1=getRandomNumber()
+                    try {
+                        msg.replyTo.send(messageGetRandomNumber)
+                    }catch (e: Exception){
+
+                    }
+                }
+            }
+            super.handleMessage(msg)
+        }
     }
 }

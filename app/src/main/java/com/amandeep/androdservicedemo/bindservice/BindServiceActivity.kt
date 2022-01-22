@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.IBinder
 import android.telecom.ConnectionService
+import com.amandeep.androdservicedemo.BIND_SERVICE_CODE
 import com.amandeep.androdservicedemo.R
+import com.amandeep.androdservicedemo.STARTED_SERVICE_CODE
 import com.amandeep.androdservicedemo.databinding.ActivityBindServiceBinding
 
 class BindServiceActivity : AppCompatActivity() {
@@ -80,5 +82,11 @@ class BindServiceActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    override fun onBackPressed() {
+        val intent=Intent()
+        setResult(BIND_SERVICE_CODE,intent)
+        super.onBackPressed()
     }
 }

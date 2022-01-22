@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndrodServiceDemo" >
         <activity
-            android:name=".bindingbetweentwoaaps.BindingTwoAppsActivity"
+            android:name=".bindingbetweentwoaaps.ServerSideActivity"
             android:exported="false" />
         <activity
             android:name=".bindservice.BindServiceActivity"
@@ -35,7 +35,7 @@
             android:name=".bindservice.BindService"
             android:exported="false" />
         <service
-            android:name=".bindingbetweentwoaaps.BindingTwoAppsService"
+            android:name=".bindingbetweentwoaaps.ServerSideService"
             android:exported="true" />
     </application>
 
