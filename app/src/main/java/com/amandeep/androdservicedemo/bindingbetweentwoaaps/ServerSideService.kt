@@ -4,7 +4,9 @@ import android.app.Service
 import android.content.Intent
 import android.os.*
 import android.util.Log
+import android.widget.Toast
 import com.amandeep.androdservicedemo.TAG
+import com.amandeep.androdservicedemo.utils.showToast
 import java.lang.Exception
 import kotlin.random.Random
 
@@ -18,8 +20,13 @@ class ServerSideService : Service() {
         super.onCreate()
     }
 
-    override fun onBind(p0: Intent?): IBinder? {
-        return randomMessenger.binder
+    override fun onBind(intent: Intent?): IBinder? {
+        return if (intent?.`package`=="com.amandeep.clientsidebinderapp") {
+            randomMessenger.binder
+        } else {
+            showToast("Wrong package")
+            null
+        }
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
