@@ -9,6 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.amandeep.androdservicedemo.bindingbetweentwoaaps.ServerSideActivity
 import com.amandeep.androdservicedemo.bindservice.BindServiceActivity
 import com.amandeep.androdservicedemo.databinding.ActivityMainBinding
+import com.amandeep.androdservicedemo.intentservice.IntentServiceActivity
 import com.amandeep.androdservicedemo.startedService.StartedServiceActivity
 import javax.security.auth.login.LoginException
 
@@ -40,7 +41,12 @@ class MainActivity : AppCompatActivity() {
             Intent(this,ServerSideActivity::class.java).apply {
                 activityResultCallBack.launch(this)
             }
+        }
 
+        binding.btnIntentService.setOnClickListener {
+            Intent(this,IntentServiceActivity::class.java).apply {
+                activityResultCallBack.launch(this)
+            }
         }
 
     }

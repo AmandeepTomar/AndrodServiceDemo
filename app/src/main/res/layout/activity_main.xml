@@ -8,14 +8,17 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnStartService"
         android:layout_width="@dimen/_0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:text="@string/start_service"
-        android:id="@+id/btnStartService"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.156" />
+
     <com.google.android.material.button.MaterialButton
         android:layout_marginTop="@dimen/_10dp"
         android:layout_width="@dimen/_0dp"
@@ -35,6 +38,16 @@
         app:layout_constraintTop_toBottomOf="@id/btnBindServiceLocal"
         android:text="@string/bind_service_with_in_two_apps"
         android:id="@+id/btnBindServiceRemote"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnBindServiceRemote"
+        android:text="@string/intent_service"
+        android:id="@+id/btnIntentService"/>
 
 
 
