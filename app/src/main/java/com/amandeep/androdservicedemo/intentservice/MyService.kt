@@ -10,6 +10,7 @@ import kotlin.random.Random
 /**
  * Intent service is depicated , if you are using 8 or + use jobIntentService
  * this one is run on worker thread so no need to start the thread
+ * As we notice a we go on background it stops after two minutes.
  * */
 
 class MyService : IntentService("IntentService") {

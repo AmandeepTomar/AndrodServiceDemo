@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.amandeep.androdservicedemo">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -43,6 +45,8 @@
             android:name=".bindingbetweentwoaaps.ServerSideService"
             android:exported="true" />
         <service android:name=".intentservice.MyService" android:exported="false"/>
+        <service android:name=".intentservice.MyJobIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
     </application>
 
 </manifest>
