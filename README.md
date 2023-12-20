@@ -152,6 +152,12 @@ JobScheduler.JobSchedule(jonInfo)
 JobInfor -> Network , battery , Wifi , JonID , backOff Policy and all. 
 minimum value for preodic is 15 min. 
 ```
+##### Foreground Service
+To prevet the service got killed. perform operation that are noticable to the user.
+permission -> android.permission.FOREGROUND_SERVICE.
+<b>API level 29 or higher:</b> You must declare all foreground services that use location information, using the location service type.
+<b>API level 30 or higher:</b> You must declare all foreground services that use the camera or microphone, using the camera or microphone service type, respectively.
+<b>API level 34 or higher: </b>You must declare all foreground services with their service types.
+<b>If you try to create a foreground service and its type isn't declared in the manifest, the system throws a MissingForegroundServiceTypeException upon calling startForeground().</b>
 
-
-
+Just call teh `startForegroundService(id , notifiocation)` in `onHandleIntent() `in Service and call the service in Activity using             `ContextCompat.startForegroundService(this,foregroundService)`

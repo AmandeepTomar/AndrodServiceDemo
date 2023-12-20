@@ -5,8 +5,10 @@ import android.app.Notification
 import android.content.Intent
 import android.os.IBinder
 import android.util.Log
+import androidx.core.app.ServiceCompat
 import com.amandeep.androdservicedemo.MainActivity
 import com.amandeep.androdservicedemo.MyApplication
+import com.amandeep.androdservicedemo.jonserviceScheduler.MyNotificationManager
 import java.lang.Exception
 import kotlin.random.Random
 
@@ -16,7 +18,7 @@ import kotlin.random.Random
  * As we notice a we go on background it stops after two minutes.
  * */
 
-class MyService : IntentService("IntentService") {
+class MyServiceForeground : IntentService("IntentService") {
 
     private var isGeneratedRandomNo = false;
     private val TAG = "MyIntentService"
@@ -31,8 +33,10 @@ class MyService : IntentService("IntentService") {
         return null
     }
 
+
     override fun onHandleIntent(p0: Intent?) {
         Log.e(TAG, "onHandleIntent: ${Thread.currentThread().name}")
+        startForeground(1 , getNotification())
         isGeneratedRandomNo = true
         if (isGeneratedRandomNo) {
             generateRandomNumber()
@@ -40,11 +44,20 @@ class MyService : IntentService("IntentService") {
 
     }
 
+    private fun getNotification(): Notification? {
 
+        val notification=  MyApplication.getMyAppsNotificationManager()?.getNotification(IntentServiceActivity::class.java,
+            "BackgroundService running",
+            1,
+            false,
+            1);
+        return notification
+    }
 
     override fun onDestroy() {
         Log.d(TAG, "onDestroy: ")
         stopGeneratingNumber()
+        MyNotificationManager.getInstance(this)?.cancelNotification(1)
         super.onDestroy()
     }
 

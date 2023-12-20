@@ -14,15 +14,16 @@ import com.amandeep.androdservicedemo.R
 
 
 class MyNotificationManager constructor(private val context: Context) {
-
     private var notificationManagerCompat: NotificationManagerCompat? = null
     private var notificationManager: NotificationManager? = null
 
-    private fun MyAppsNotificationManager(context: Context) {
+
+    init {
         notificationManagerCompat = NotificationManagerCompat.from(context)
         notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     }
+
 
     companion object{
         @Volatile  var instance: MyNotificationManager? = null
@@ -64,20 +65,13 @@ class MyNotificationManager constructor(private val context: Context) {
             PendingIntent.FLAG_IMMUTABLE
         )
         val builder: NotificationCompat.Builder =
-            NotificationCompat.Builder(context!!, "ChannelID")
-                .setSmallIcon(R.drawable.ic_notification)
-                .setLargeIcon(
-                    BitmapFactory.decodeResource(
-                        context!!.resources,
-                        R.drawable.ic_launcher_background
-                    )
-                )
+            NotificationCompat.Builder(context, "ChannelId")
                 .setContentTitle(title)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
-                .setChannelId("123")
                 .setAutoCancel(true)
         return builder.build()
+
     }
 
     fun cancelNotification(notificationId: Int) {

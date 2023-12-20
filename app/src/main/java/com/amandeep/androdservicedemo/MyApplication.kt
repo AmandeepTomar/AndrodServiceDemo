@@ -7,6 +7,7 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        myNotificationManager = MyNotificationManager.getInstance(this)
         myNotificationManager?.registerNotificationChannelChannel(
             "ChannelId",
             "BackgroundService",
@@ -16,7 +17,7 @@ class MyApplication : Application() {
 
 
     companion object {
-        private val myNotificationManager: MyNotificationManager? = null
+        private var myNotificationManager: MyNotificationManager? = null
         fun getMyAppsNotificationManager(): MyNotificationManager? {
             return myNotificationManager
 

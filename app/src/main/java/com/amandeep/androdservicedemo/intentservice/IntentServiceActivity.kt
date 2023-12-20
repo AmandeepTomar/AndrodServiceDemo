@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.content.ContextCompat
 import com.amandeep.androdservicedemo.R
 import com.amandeep.androdservicedemo.TAG
 import com.amandeep.androdservicedemo.databinding.ActivityIntentServiceBinding
@@ -13,6 +14,7 @@ class IntentServiceActivity : AppCompatActivity() {
     private lateinit var myIntent:Intent
     private var count = 0
     private val jobIntentService by lazy {Intent(applicationContext,MyJobIntentService::class.java) }
+    private val foregroundService by lazy { Intent(this,MyServiceForeground::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +39,14 @@ class IntentServiceActivity : AppCompatActivity() {
 
         binding.btnIsStopJobIntentService.apply {
             stopService(jobIntentService)
+        }
+
+        binding.btnStartForegroundService.setOnClickListener {
+            ContextCompat.startForegroundService(this,foregroundService)
+        }
+
+        binding.btnIsStopForegroundService.setOnClickListener {
+            stopService(foregroundService)
         }
     }
 }
