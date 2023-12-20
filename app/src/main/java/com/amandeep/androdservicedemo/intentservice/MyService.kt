@@ -15,9 +15,9 @@ import kotlin.random.Random
 
 class MyService : IntentService("IntentService") {
 
-    private var isGeneratedRandomNo=false;
-    private val TAG="MyIntentService"
-    private var randomNumber=0
+    private var isGeneratedRandomNo = false;
+    private val TAG = "MyIntentService"
+    private var randomNumber = 0
 
     override fun onCreate() {
         super.onCreate()
@@ -29,11 +29,11 @@ class MyService : IntentService("IntentService") {
     }
 
     override fun onHandleIntent(p0: Intent?) {
-        Log.e(TAG, "onHandleIntent: ${Thread.currentThread().name}" )
-        isGeneratedRandomNo=true
-            if (isGeneratedRandomNo){
-                generateRandomNumber()
-            }
+        Log.e(TAG, "onHandleIntent: ${Thread.currentThread().name}")
+        isGeneratedRandomNo = true
+        if (isGeneratedRandomNo) {
+            generateRandomNumber()
+        }
 
     }
 
@@ -44,17 +44,17 @@ class MyService : IntentService("IntentService") {
     }
 
     private fun stopGeneratingNumber() {
-        isGeneratedRandomNo=false
+        isGeneratedRandomNo = false
     }
 
 
-    private fun generateRandomNumber(){
-        while (isGeneratedRandomNo){
+    private fun generateRandomNumber() {
+        while (isGeneratedRandomNo) {
             try {
                 Thread.sleep(1000)
-                randomNumber= Random.nextInt(10)+0
+                randomNumber = Random.nextInt(10) + 0
                 Log.e(TAG, "generateRandomNumber:$randomNumber ")
-            }catch (e:Exception){
+            } catch (e: Exception) {
                 Log.i(TAG, "generateRandomNumber: e")
             }
         }

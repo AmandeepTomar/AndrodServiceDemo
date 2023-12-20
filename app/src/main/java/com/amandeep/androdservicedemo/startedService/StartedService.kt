@@ -27,9 +27,10 @@ class StartedService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        Log.e(TAG, "onStartCommand: $startId", )
         isRandomNoGenerated=true
         Thread(Runnable {
-            startGeneratedRandomNo()
+           // startGeneratedRandomNo()
         }).start()
 
         return START_NOT_STICKY // not recreate

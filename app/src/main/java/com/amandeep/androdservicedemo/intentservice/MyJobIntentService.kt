@@ -11,22 +11,29 @@ import java.lang.Exception
  * reschedule or restart the service
  *  permission ->android.permission.BIND_JOB_SERVICE
  *
+ *onHandleWork(intent Intent){}
  *  add wake lock permission in manifest -> to avoid stop service in background.
  *
  * */
 
 class MyJobIntentService : JobIntentService() {
-    private val TAG="MyJobIntentService"
-    private var randomNumber=0
+    private val TAG = "MyJobIntentService"
+    private var randomNumber = 0
 
-    companion object{
-        fun enqueueWorkStart(context: Context,work:Intent){
-            enqueueWork(context,MyJobIntentService::class.java,101,work)
+    companion object {
+        fun enqueueWorkStart(context: Context, work: Intent) {
+            enqueueWork(context, MyJobIntentService::class.java, 101, work)
         }
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        Log.e(TAG, "onCreate: ")
     }
 
     override fun onHandleWork(intent: Intent) {
         Log.e(TAG, "onHandleWork: ${Thread.currentThread().name}")
+        generateRandomNumber(intent.getIntExtra("Count",0))
     }
 
     override fun onStopCurrentWork(): Boolean {
@@ -39,11 +46,12 @@ class MyJobIntentService : JobIntentService() {
         super.onDestroy()
     }
 
-    private fun generateRandomNumber(){
-        for (i in 1..10){
+    private fun generateRandomNumber(count: Int) {
+        for (i in 1..10) {
             try {
-
-            }catch (e:Exception){
+                Thread.sleep(1000)
+                Log.e(TAG, "generateRandomNumber: $i Started At $count")
+            } catch (e: Exception) {
                 Log.e(TAG, "generateRandomNumber: $e")
             }
         }

@@ -11,6 +11,8 @@ import com.amandeep.androdservicedemo.databinding.ActivityIntentServiceBinding
 class IntentServiceActivity : AppCompatActivity() {
     private lateinit var binding: ActivityIntentServiceBinding
     private lateinit var myIntent:Intent
+    private var count = 0
+    private val jobIntentService by lazy {Intent(applicationContext,MyJobIntentService::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,15 @@ class IntentServiceActivity : AppCompatActivity() {
 
         binding.btnIsStopService.setOnClickListener {
             stopService(myIntent)
+        }
+
+        binding.btnStartJobIntentService.setOnClickListener {
+            jobIntentService.putExtra("Count",++count)
+            MyJobIntentService.enqueueWorkStart(applicationContext,jobIntentService)
+        }
+
+        binding.btnIsStopJobIntentService.apply {
+            stopService(jobIntentService)
         }
     }
 }

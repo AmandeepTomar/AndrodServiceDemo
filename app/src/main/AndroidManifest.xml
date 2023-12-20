@@ -2,15 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.amandeep.androdservicedemo">
 
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndrodServiceDemo">
+        <activity
+            android:name=".jonserviceScheduler.JobServiceActivity"
+            android:exported="false" />
         <activity
             android:name=".intentservice.IntentServiceActivity"
             android:exported="false"
@@ -44,8 +50,14 @@
         <service
             android:name=".bindingbetweentwoaaps.ServerSideService"
             android:exported="true" />
-        <service android:name=".intentservice.MyService" android:exported="false"/>
-        <service android:name=".intentservice.MyJobIntentService"
+        <service
+            android:name=".intentservice.MyService"
+            android:exported="false" />
+        <service
+            android:name=".intentservice.MyJobIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <service android:name=".jonserviceScheduler.MyJobService"
             android:permission="android.permission.BIND_JOB_SERVICE"/>
     </application>
 
