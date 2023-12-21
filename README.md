@@ -1,5 +1,26 @@
 # AndrodServiceDemo
-Detailed Information about Service in Android
+Detailed Information about Service in Android. 
+Its include 
+- Android Service 
+- Intent Service 
+- Job Intent Service
+- JobService and JobScheduler
+- ForeGroundService 
+- WorkManage
+  - Worker , CoroutineWorker 
+  - WorkRequest 
+    - OneTime 
+    - Periodic
+  - Constraints
+  - Conflict Policy 
+    - OneTime 
+      - KEEP , REPLACE , APPEND , APPEND_OR_REPLACE 
+    - Periodic 
+      - KEEP , REPLACE , UPDATE(in latest)
+- Some Interview Question? 
+- What happen when we call Same AsyncTask instance twice at the same time?
+- What Happen when started thread called start again on the same thread. 
+
 
 ## What is Service
 A service is an android application component that can perform long running operation in the background. It does not provide UI. Once started, a service might continue running for some time, even after the user switches to another application.
